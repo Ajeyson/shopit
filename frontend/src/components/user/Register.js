@@ -12,9 +12,10 @@ const Register = ({ history }) => {
         name: '',
         email: '',
         password: '',
+        role:''
     })
 
-    const { name, email, password } = user;
+    const { name, email, password ,role} = user;
 
     const [avatar, setAvatar] = useState('')
     const [avatarPreview, setAvatarPreview] = useState('/images/default_avatar.jpg')
@@ -44,6 +45,7 @@ const Register = ({ history }) => {
         formData.set('name', name);
         formData.set('email', email);
         formData.set('password', password);
+        formData.set('role', role);
         formData.set('avatar', avatar);
 
         dispatch(register(formData))
@@ -113,7 +115,17 @@ const Register = ({ history }) => {
                                 onChange={onChange}
                             />
                         </div>
-
+                        <div className="form-group">
+                            <label htmlFor="password_field">Admin or User</label>
+                            <input
+                                type="text"
+                                id="password_field"
+                                className="form-control"
+                                name='role'
+                                value={role}
+                                onChange={onChange}
+                            />
+                        </div>
                         <div className='form-group'>
                             <label htmlFor='avatar_upload'>Avatar</label>
                             <div className='d-flex align-items-center'>

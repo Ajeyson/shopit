@@ -6,7 +6,8 @@ const bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload')
 // const dotenv = require('dotenv');
 const path = require('path')
-
+const cors =require('cors')
+app.use(cors())
 const errorMiddleware = require('./middlewares/errors')
 
 // Setting up config file 
