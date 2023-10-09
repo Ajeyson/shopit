@@ -44,6 +44,7 @@ const Home = ({ match }) => {
     const keyword = match.params.keyword
 
     useEffect(() => {
+        console.log(products)
         if (error) {
             return alert.error(error)
         }
@@ -60,6 +61,7 @@ const Home = ({ match }) => {
     let count = productsCount;
     if (keyword) {
         count = filteredProductsCount
+        console.log(keyword)
     }
 
     return (

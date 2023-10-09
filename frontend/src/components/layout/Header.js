@@ -18,6 +18,7 @@ const Header = () => {
 
     const logoutHandler = () => {
         dispatch(logout());
+        localStorage.clear()
         alert.success('Logged out successfully.')
     }
 

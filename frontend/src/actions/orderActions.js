@@ -26,10 +26,11 @@ export const createOrder = (order) => async (dispatch, getState) => {
     try {
 
         dispatch({ type: CREATE_ORDER_REQUEST })
-
+        const token =localStorage.getItem('token')
         const config = {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization' :token
             }
         }
 
@@ -53,8 +54,14 @@ export const myOrders = () => async (dispatch) => {
     try {
 
         dispatch({ type: MY_ORDERS_REQUEST });
-
-        const { data } = await axios.get('http://localhost:3003/api/v1/orders/me')
+        const token =localStorage.getItem('token')
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization' :token
+            }
+        }
+        const { data } = await axios.get('http://localhost:3003/api/v1/orders/me',config)
 
         dispatch({
             type: MY_ORDERS_SUCCESS,
@@ -74,8 +81,14 @@ export const getOrderDetails = (id) => async (dispatch) => {
     try {
 
         dispatch({ type: ORDER_DETAILS_REQUEST });
-
-        const { data } = await axios.get(`http://localhost:3003/api/v1/order/${id}`)
+        const token =localStorage.getItem('token')
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization' :token
+            }
+        }
+        const { data } = await axios.get(`http://localhost:3003/api/v1/order/${id}`,config)
 
         dispatch({
             type: ORDER_DETAILS_SUCCESS,
@@ -95,8 +108,14 @@ export const allOrders = () => async (dispatch) => {
     try {
 
         dispatch({ type: ALL_ORDERS_REQUEST });
-
-        const { data } = await axios.get(`http://localhost:3003/api/v1/admin/orders`)
+        const token =localStorage.getItem('token')
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization' :token
+            }
+        }
+        const { data } = await axios.get(`http://localhost:3003/api/v1/admin/orders`,config)
 
         dispatch({
             type: ALL_ORDERS_SUCCESS,
@@ -116,10 +135,11 @@ export const updateOrder = (id, orderData) => async (dispatch) => {
     try {
 
         dispatch({ type: UPDATE_ORDER_REQUEST })
-
+        const token =localStorage.getItem('token')
         const config = {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization' :token
             }
         }
 

@@ -57,7 +57,14 @@ function App() {
     store.dispatch(loadUser())
 
     async function getStripApiKey() {
-      const { data } = await axios.get('http://localhost:3003/api/v1/stripeapi');
+      const token =localStorage.getItem('token')
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization' :token
+            }
+        }
+      const { data } = await axios.get('http://localhost:3003/api/v1/stripeapi',config);
 
       setStripeApiKey(data.stripeApiKey)
     }
