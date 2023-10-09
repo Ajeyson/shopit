@@ -20,6 +20,7 @@ const Header = () => {
         dispatch(logout());
         localStorage.clear()
         alert.success('Logged out successfully.')
+        window.location.reload()
     }
 
     return (
